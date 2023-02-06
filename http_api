@@ -1,0 +1,19 @@
+
+
+
+GET /api/version/:userId/chat/top
+
+GET /api/version/:userId/chat/top/:number
+
+GET /api/version/:userId/chat/:chatId
+
+GET /api/version/:userId/chat/paginate/:number/page/:pageNumber
+
+POST /api/version/login
+
+PUT /api/version/chat/:chatId/
+
+DELETE /api/vesion/chat/:chatId/message/:messageId 
+
+
+

@@ -1,22 +1,46 @@
 const {login, auth} = require('../../../libs/auth.js');
-const ChatController = require('../../../controller/chatController.js');
-const router = require('express').Router();
+const ChatController = require('../../../controller/chatController.js').proxy;
+
+const Express = require('express');
 const dispatch = require('../../../libs/requestDispatcher.js');
+const { router } = require('../../server.js');
 
 //router.post('/login', login);
 
 // http chat routes
+const router1 = Express.Router();
+const router2 = Express.Router();
 
-router.all('*', auth);
+router1.all('*', auth);
+router2.all('*', auth);
 
-router.use('/glance/:userId', )
+//router.use('/glance/:userId', )
 
-router.get('/glance/:userId/top/:optionNumber', dispatch(ChatController.getTopChat));
+// GET /api/version/:userId/chat/top
 
-router.get('/glance/:userId/paginate/:number');
+// GET /api/version/:userId/chat/top/:number
 
-router.get('/:userId/room/:roomId');
+// GET /api/version/:userId/chat/:chatId
 
-router.get('/',() => {});
+// GET /api/version/:userId/chat/paginate/:number/page/:pageNumber
 
-module.exports = router;
+// DELETE /api/vesion/chat/:chatId/message/:messageId 
+
+router1.get('/:userId/chat/top', dispatch(...ChatController.getDefaultTopChat));
+
+router1.get('/:userId/chat/top/:number', dispatch(...ChatController.getNumberOfTopChat));
+
+router1.get('/:userId/chat/:chatId', dispatch(...ChatController.getSpecificChat));
+
+router1.get('/:userId/chat/paginate/:number/page/:pageNumber', dispatch(...ChatController.getChatsInPaginatedOrders));
+
+// POST /api/version/login
+// PUT /api/version/chat/:chatId/
+
+
+// router2.get('/login');
+
+// router2.put('chat/:chatId/');
+
+
+

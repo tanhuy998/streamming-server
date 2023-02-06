@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_ADDRESS);
 
-const userSchema = require('./user.schema.js');
-const chatSchema = require('./chatRoom.schema.js');
+
+const conn_string = process.env.MONGODB_CONN.replace(/<password>/, process.env.MONGODB_PASS);
+mongoose.connect(conn_string);
 
 
 module.exports = mongoose;

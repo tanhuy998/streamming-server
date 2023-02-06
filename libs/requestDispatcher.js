@@ -1,6 +1,10 @@
-function requestDispatcher(_Callback) {
+const Controller = require('../controller/baseController.js').proxy;
+
+function requestDispatcher(controllerObject, controllerAction) {
 
     return function(req, res, next) {
+
+        controllerObject.setContext(req, res, next);
 
         const req_params = req.params;
 
@@ -11,7 +15,7 @@ function requestDispatcher(_Callback) {
             param_arr.push(req_params[key]);
         }
 
-        _Callback(...param_arr, req, res, next);
+        return controllerAction(...param_arr);
     }
 }
 

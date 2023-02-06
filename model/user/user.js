@@ -5,27 +5,27 @@ const {ChatRoomModel} = require('../chatroom/chatRoom.js');
 
 class UserRepository {
 
-    static async getById(_id) {
+    static getById(_id) {
 
-        return UserModel.findOne({id: _id}).exec();
+        return UserModel.findOne({id: _id});
     }
 
-    static async getManyById(_ids) {
+    static getManyById(_ids) {
 
         return UserModel.find({
             id: {
                 $in: _ids
             }
-        }).exec();
+        });
     }
 
-    static async getFriendsOf(_User) {
+    static getFriendsOf(_User) {
 
         return UserModel.find({
             id: {
                 $in: _User.friends
             }
-        }).exec();
+        });
     }
 
     static async getTopChatRooms(_User) {

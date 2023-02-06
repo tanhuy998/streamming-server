@@ -5,6 +5,6 @@ const app = Express();
 
 const chatRoutes = require('./api/v1/chat.js');
 
-app.use('/api/v1/chat', chatRoutes);
+app.use('/api/v1/chat/glance', chatRoutes);
 
 module.exports = app;
